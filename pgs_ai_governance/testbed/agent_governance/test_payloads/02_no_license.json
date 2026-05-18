@@ -1,0 +1,10 @@
+{
+  "tool_name": "PROVISION_STANDARD_LICENSE",
+  "parameters": {
+    "tier": "standard",
+    "quantity": 10
+  },
+  "requesting_user_id": "EMP_NONE_001",
+  "domain_context": "ai_licensing",
+  "request_id": "REQ_TEST_002"
+}

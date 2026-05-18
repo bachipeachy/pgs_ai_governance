@@ -1,0 +1,12 @@
+{
+  "license_id": "lic-7526",
+  "threshold_days": 30,
+
+  "context": {
+    "employee_id": "e-7526",
+    "last_active_date": "2025-01-20T11:00:00Z",
+    "current_date": "2025-02-20T11:00:00Z",
+    "is_inactive": true,
+    "days_inactive": 31
+  }
+}

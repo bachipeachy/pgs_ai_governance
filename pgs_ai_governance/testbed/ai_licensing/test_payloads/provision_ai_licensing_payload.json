@@ -1,0 +1,14 @@
+{
+  "employee_id": "e-7526",
+
+  "context": {
+    "training_completed": true,
+    "assigned_count": 2,
+    "cap": 10,
+    "reason_code": null
+  },
+
+  "generated": {
+    "license_id": "lic-7526"
+  }
+}

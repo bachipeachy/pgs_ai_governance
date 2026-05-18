@@ -1,0 +1,10 @@
+{
+  "tool_name": "PROVISION_PREMIUM_LICENSE",
+  "parameters": {
+    "tier": "premium",
+    "quantity": 10
+  },
+  "requesting_user_id": "EMP_STD_001",
+  "domain_context": "ai_licensing",
+  "request_id": "REQ_TEST_003"
+}

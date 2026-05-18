@@ -1,0 +1,9 @@
+{
+  "tool_name": "EXECUTE_SHELL_COMMAND",
+  "parameters": {
+    "command": "rm -rf /"
+  },
+  "requesting_user_id": "EMP_ENT_001",
+  "domain_context": "system",
+  "request_id": "REQ_TEST_007"
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govern Agent Action — Agent Governance</title>
+    <link rel="stylesheet" href="css/wallet.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-inner">
+            <img src="img/pgs_logo.png" alt="PGS" class="logo">
+            <h1 class="app-title">Agent Governance</h1>
+            <img src="img/ob_logo.png" alt="PGS" class="logo">
+        </div>
+        <nav class="screen-nav">
+            <a href="govern_agent_action.html" class="active">Govern Agent Action</a>
+        </nav>
+    </header>
+
+    <div class="container governance-wide">
+        <h2>Govern Agent Action</h2>
+        <p class="form-subtitle">Submit any action — the protocol catches privilege escalation structurally.</p>
+
+        <!-- Governance Reference (collapsible) -->
+        <details class="governance-ref">
+            <summary>Governance Surface Reference</summary>
+            <div class="ref-content">
+                <div class="ref-section">
+                    <strong>Declared Tools</strong>
+                    <code>READ_RECORD</code>, <code>PROVISION_STANDARD_LICENSE</code>, <code>PROVISION_PREMIUM_LICENSE</code>
+                </div>
+                <div class="ref-section">
+                    <strong>Known Users</strong>
+                    <span><code>EMP_STD_001</code> (standard)</span>,
+                    <span><code>EMP_ENT_001</code> (enterprise)</span>,
+                    <span><code>EMP_INACTIVE_001</code> (inactive)</span>
+                </div>
+                <div class="ref-section">
+                    <strong>Tier &rarr; Authorized Tools</strong>
+                    <ul>
+                        <li><code>none</code> &rarr; READ_RECORD</li>
+                        <li><code>standard</code> &rarr; + PROVISION_STANDARD_LICENSE</li>
+                        <li><code>enterprise</code> &rarr; + PROVISION_PREMIUM_LICENSE</li>
+                    </ul>
+                </div>
+                <div class="ref-section">
+                    <strong>Parameter Limits</strong>
+                    <ul>
+                        <li>PROVISION_STANDARD_LICENSE: tier=&quot;standard&quot;, quantity &le; 100</li>
+                        <li>PROVISION_PREMIUM_LICENSE: tier=&quot;premium&quot;, quantity &le; 50</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+
+        <!-- Quick Scenarios -->
+        <div class="scenario-panel">
+            <h3 class="scenario-title">Quick Scenarios</h3>
+            <div class="scenario-grid">
+                <button type="button" class="scenario-btn success" onclick="loadScenario('standard_happy')">
+                    <span class="scenario-label">Standard License</span>
+                    <span class="scenario-hint">Happy path &rarr; EXIT_SUCCESS</span>
+                </button>
+                <button type="button" class="scenario-btn success" onclick="loadScenario('enterprise_happy')">
+                    <span class="scenario-label">Enterprise Premium</span>
+                    <span class="scenario-hint">Authorized tier &rarr; EXIT_SUCCESS</span>
+                </button>
+                <button type="button" class="scenario-btn danger" onclick="loadScenario('unknown_user')">
+                    <span class="scenario-label">Unknown User</span>
+                    <span class="scenario-hint">No license record &rarr; EXIT_UNAUTHORIZED_ACTOR</span>
+                </button>
+                <button type="button" class="scenario-btn danger" onclick="loadScenario('tier_escalation')">
+                    <span class="scenario-label">Tier Escalation</span>
+                    <span class="scenario-hint">Standard &rarr; premium tool &rarr; EXIT_UNAUTHORIZED_TOOL</span>
+                </button>
+                <button type="button" class="scenario-btn danger" onclick="loadScenario('undeclared_tool')">
+                    <span class="scenario-label">Undeclared Tool</span>
+                    <span class="scenario-hint">DELETE_DATABASE &rarr; EXIT_UNDECLARED_TOOL</span>
+                </button>
+                <button type="button" class="scenario-btn danger" onclick="loadScenario('shell_injection')">
+                    <span class="scenario-label">Shell Injection</span>
+                    <span class="scenario-hint">EXECUTE_SHELL_COMMAND + rm -rf / &rarr; EXIT_UNDECLARED_TOOL</span>
+                </button>
+                <button type="button" class="scenario-btn danger" onclick="loadScenario('parameter_violation')">
+                    <span class="scenario-label">Parameter Violation</span>
+                    <span class="scenario-hint">quantity=200 exceeds max 100 &rarr; EXIT_PARAMETER_VIOLATION</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="govern-form" data-workflow="ai_governance::WF_GOVERN_AGENT_ACTION_V0"
+              onsubmit="event.preventDefault(); submitGovernanceForm();">
+
+            <div class="form-group">
+                <label for="tool_name">Tool Name</label>
+                <input type="text" id="tool_name" placeholder="e.g. PROVISION_STANDARD_LICENSE — or type anything" required>
+            </div>
+
+            <div class="form-group">
+                <label for="requesting_user_id">Requesting User</label>
+                <input type="text" id="requesting_user_id" placeholder="e.g. EMP_STD_001 — or type any user ID" required>
+            </div>
+
+            <div class="form-group">
+                <label for="domain_context">Domain Context</label>
+                <input type="text" id="domain_context" value="ai_governance" placeholder="e.g. ai_governance">
+            </div>
+
+            <div class="form-group">
+                <label for="request_id">Request ID</label>
+                <input type="text" id="request_id" placeholder="auto-generated if blank">
+            </div>
+
+            <div class="form-group">
+                <label for="parameters">Parameters (JSON)</label>
+                <textarea id="parameters" rows="4" placeholder='{"tier": "standard", "quantity": 50}'>{"tier": "standard", "quantity": 50}</textarea>
+            </div>
+
+            <button type="submit" class="primary-button">Submit for Governance</button>
+        </form>
+
+        <div id="result" class="result-panel"></div>
+    </div>
+
+    <footer class="app-footer">
+        PGS Thin Client Transport v0.2 — Protocol-Governed Systems
+    </footer>
+
+    <script src="js/governance_bridge.js"></script>
+</body>
+</html>

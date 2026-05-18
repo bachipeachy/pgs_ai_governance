@@ -1,0 +1,12 @@
+{
+  "EMP_STD_001": {
+    "license_status": "active",
+    "license_tier": "standard",
+    "org_unit": "engineering"
+  },
+  "EMP_ENT_001": {
+    "license_status": "active",
+    "license_tier": "enterprise",
+    "org_unit": "platform"
+  }
+}

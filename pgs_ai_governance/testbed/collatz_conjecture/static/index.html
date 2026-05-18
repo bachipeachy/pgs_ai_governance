@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collatz Conjecture — AI Governance Demo</title>
+    <link rel="stylesheet" href="css/wallet.css">
+    <link rel="stylesheet" href="css/collatz.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-inner">
+            <img src="img/pgs_logo.png" alt="PGS" class="logo">
+            <h1 class="app-title">Collatz Conjecture</h1>
+            <img src="img/ob_logo.png" alt="OmniBachi" class="logo">
+        </div>
+        <nav class="screen-nav">
+            <a href="index.html" class="active">Collatz Explorer</a>
+        </nav>
+    </header>
+
+    <div class="container collatz-wide">
+
+        <!-- What is the Collatz Conjecture? -->
+        <details class="explainer" open>
+            <summary>What is the Collatz Conjecture?</summary>
+            <div class="explainer-body">
+                <p>
+                    Pick any positive integer. Apply one simple rule repeatedly:
+                </p>
+                <div class="rule-box">
+                    <span class="rule-even">If <strong>n</strong> is <em>even</em> &rarr; <strong>n &divide; 2</strong></span>
+                    <span class="rule-sep">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+                    <span class="rule-odd">If <strong>n</strong> is <em>odd</em> &rarr; <strong>3n + 1</strong></span>
+                </div>
+                <p>
+                    The conjecture states: <strong>every positive integer eventually reaches 1.</strong>
+                    No one has ever found a counterexample, and no one has proved it holds universally.
+                    It remains one of the most famous unsolved problems in mathematics.
+                </p>
+                <p class="explainer-pgs-note">
+                    In PGS, this is a <em>protocol invariant</em> — the runtime doesn't know what Collatz means.
+                    It simply traverses the declared execution graph. <code>VIOLATION</code> is a first-class exit,
+                    not a bug. The trace is verifiable proof of what was computed.
+                </p>
+            </div>
+        </details>
+
+        <!-- Form -->
+        <form id="collatz-form" data-workflow="ai_governance::WF_DEMO_COLLATZ_CONJECTURE_V0"
+              onsubmit="event.preventDefault(); submitCollatz();">
+
+            <div class="form-group">
+                <label for="seed_number">Enter a number (1 &ndash; 999,999)</label>
+                <input type="number" id="seed_number" min="1" max="999999"
+                       placeholder="e.g. 27" required>
+            </div>
+
+            <!-- Quick picks -->
+            <div class="quick-picks">
+                <span class="quick-label">Try:</span>
+                <button type="button" class="pick-btn" onclick="setPick(27)">27</button>
+                <button type="button" class="pick-btn" onclick="setPick(871)">871</button>
+                <button type="button" class="pick-btn" onclick="setPick(6171)">6,171</button>
+                <button type="button" class="pick-btn" onclick="setPick(77031)">77,031</button>
+                <button type="button" class="pick-btn" onclick="setPick(837799)">837,799</button>
+            </div>
+
+            <button type="submit" class="primary-button">Compute Sequence</button>
+        </form>
+
+        <div id="result" class="result-panel"></div>
+    </div>
+
+    <footer class="app-footer">
+        PGS Thin Client Transport v0.2 — Protocol-Governed Systems &mdash; AI Governance Domain
+    </footer>
+
+    <script src="js/collatz_bridge.js"></script>
+</body>
+</html>
