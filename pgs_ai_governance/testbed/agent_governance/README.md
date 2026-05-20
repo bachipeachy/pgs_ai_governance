@@ -47,20 +47,22 @@ Request
 ### One-time: seed data
 
 `license_facts.json` holds the user → license mapping. It lives in `seed_data/` and
-must be visible to the runtime at `$PGS_DATA_ROOT/license_facts.json`.
+must be visible to the runtime at `$PGS_DATA_ROOT/ai_governance/ai_licensing/license_facts.json`.
 
 **Symlink (recommended — no copying, seed_data stays the source of truth):**
 
 ```bash
+mkdir -p "$PGS_DATA_ROOT/ai_governance/ai_licensing"
 ln -sf \
   "$(pwd)/seed_data/license_facts.json" \
-  "$PGS_DATA_ROOT/license_facts.json"
+  "$PGS_DATA_ROOT/ai_governance/ai_licensing/license_facts.json"
 ```
 
 **Or copy once:**
 
 ```bash
-cp seed_data/license_facts.json "$PGS_DATA_ROOT/license_facts.json"
+mkdir -p "$PGS_DATA_ROOT/ai_governance/ai_licensing"
+cp seed_data/license_facts.json "$PGS_DATA_ROOT/ai_governance/ai_licensing/license_facts.json"
 ```
 
 ### Seed users
@@ -86,7 +88,7 @@ omnibachi run \
 To inspect the audit trail after running:
 
 ```bash
-cat "$PGS_DATA_ROOT/governance_audit.jsonl" | python3 -c "
+cat "$PGS_DATA_ROOT/ai_governance/agent_governance/governance_audit.jsonl" | python3 -c "
 import sys, json
 for i, line in enumerate(sys.stdin, 1):
     r = json.loads(line)['record']
@@ -226,7 +228,7 @@ Enterprise tier is irrelevant — the tool surface is closed before license is c
 | What tools are declared? | `CC_CHECK_TOOL_DECLARED_V0` pipeline `allowed_set` |
 | What tools does a tier get? | `CC_BIND_LICENSE_TO_TOOL_SURFACE_V0` step 1 `map` |
 | What parameter rules apply? | `CC_VALIDATE_TOOL_PARAMETERS_V0` step 1 `map` |
-| What happened at runtime? | `$PGS_DATA_ROOT/governance_audit.jsonl` |
+| What happened at runtime? | `$PGS_DATA_ROOT/ai_governance/agent_governance/governance_audit.jsonl` |
 | Full execution trace? | `$PGS_WORKSPACE/traces/` |
 
 ### Two classes of protocol bug

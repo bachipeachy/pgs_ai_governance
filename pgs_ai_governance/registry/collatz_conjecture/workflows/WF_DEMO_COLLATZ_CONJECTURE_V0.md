@@ -86,6 +86,7 @@ version: v0
 governed_by: fb.topology::CONSTITUTION_WORKFLOW_V0
 
 runtime_binding: ai_governance::RB_COLLATZ_V0
+subdomain: collatz_conjecture
 structure: fb.topology::STRUCTURE_RUNTIME_EXECUTION_V0
 
 core:

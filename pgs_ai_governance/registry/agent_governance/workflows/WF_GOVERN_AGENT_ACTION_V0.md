@@ -92,6 +92,7 @@ wf_code: WF_GOVERN_AGENT_ACTION_V0
 version: v0
 governed_by: fb.topology::CONSTITUTION_WORKFLOW_V0
 runtime_binding: ai_governance::RB_AGENT_GOVERNANCE_BINDINGS_V0
+subdomain: agent_governance
 
 core:
   summary: Constitutional mediation of agent-proposed actions with license-tier authority binding

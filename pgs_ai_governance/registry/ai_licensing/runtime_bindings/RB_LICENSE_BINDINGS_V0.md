@@ -64,7 +64,7 @@ core:
       host: RegistryRuntime
       operation: READ_WRITE
       policy:
-        path: "{{module_data_root}}/license_registry.json"
+        path: "{{module_data_root}}/ai_governance/ai_licensing/license_registry.json"
         strict: true
 
     capability_side_effects::CS_APPENDONLY_JSONL_V0:
@@ -72,7 +72,7 @@ core:
       host: AppendOnlyJsonlRuntime
       operation: APPEND
       policy:
-        path: "{{module_data_root}}/audit_log.jsonl"
+        path: "{{module_data_root}}/ai_governance/ai_licensing/audit_log.jsonl"
         strict: true
 
 extensions:

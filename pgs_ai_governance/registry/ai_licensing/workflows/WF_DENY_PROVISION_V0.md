@@ -59,6 +59,7 @@ version: v0
 governed_by: fb.topology::CONSTITUTION_WORKFLOW_V0
 
 runtime_binding: ai_governance::RB_LICENSE_BINDINGS_V0
+subdomain: ai_licensing
 structure: fb.topology::STRUCTURE_RUNTIME_EXECUTION_V0
 
 core:

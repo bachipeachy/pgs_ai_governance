@@ -57,12 +57,12 @@ core:
   entity_stores:
     COLLATZ_RESULTS:
       description: "Mutable store for Collatz sequences and conjecture verdict (last-write-wins)"
-      path: "collatz_results.json"
+      path: "ai_governance/collatz_conjecture/collatz_results.json"
 
   resolution:
     description: "Runtime path resolution strategy"
     algorithm: "base_path / entity_stores[entity_type].path"
-    example: "{{module_data_root}}/collatz_results.json"
+    example: "{{module_data_root}}/ai_governance/collatz_conjecture/collatz_results.json"
 
   isolation:
     description: "Entity storage isolation constraints"

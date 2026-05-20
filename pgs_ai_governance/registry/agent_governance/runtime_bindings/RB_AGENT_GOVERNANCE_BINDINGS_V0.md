@@ -72,7 +72,7 @@ core:
       host: RegistryRuntime
       operation: READ_WRITE
       policy:
-        path: "{{module_data_root}}/governance_actions.json"
+        path: "{{module_data_root}}/ai_governance/agent_governance/governance_actions.json"
         strict: true
 
     capability_side_effects::CS_APPENDONLY_JSONL_V0:
@@ -80,7 +80,7 @@ core:
       host: AppendOnlyJsonlRuntime
       operation: APPEND
       policy:
-        path: "{{module_data_root}}/governance_audit.jsonl"
+        path: "{{module_data_root}}/ai_governance/agent_governance/governance_audit.jsonl"
         strict: true
 
 extensions:

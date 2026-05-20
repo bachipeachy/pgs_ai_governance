@@ -56,12 +56,12 @@ core:
   entity_stores:
     LICENSE_FACTS:
       description: "Read-only license tier and status fact feed (user_id → license record)"
-      path: "license_facts.json"
+      path: "ai_governance/ai_licensing/license_facts.json"
 
   resolution:
     description: "Runtime path resolution strategy"
     algorithm: "base_path / entity_stores[entity_type].path"
-    example: "{{module_data_root}}/license_facts.json"
+    example: "{{module_data_root}}/ai_governance/ai_licensing/license_facts.json"
 
   isolation:
     description: "Entity storage isolation constraints"
