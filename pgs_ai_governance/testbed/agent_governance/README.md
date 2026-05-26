@@ -78,7 +78,7 @@ cp seed_data/license_facts.json "$PGS_DATA_ROOT/ai_governance/ai_licensing/licen
 ## Running a Scenario
 
 ```bash
-omnibachi run \
+pgs_runtime run \
   --wf ai_governance::WF_GOVERN_AGENT_ACTION_V0 \
   --payload <path-to-payload.json> \
   --data-root "$PGS_DATA_ROOT" \

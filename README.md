@@ -80,7 +80,7 @@ compile → build → run
 |-------|-------------|-------|
 | **compile** | Source artifacts validated against invariants | `pgs_governance` / `pgs_compiler` |
 | **build** | Validated artifacts materialized into a closed snapshot | `pgs_compiler` → `pgs_workspace/protocol_snapshot/` |
-| **run** | Runtime reads snapshot and executes | `pgs_workspace` (omnibachi CLI) |
+| **run** | Runtime reads snapshot and executes | `pgs_workspace` (pgs_runtime CLI) |
 
 The snapshot is sealed at build time. No behavior enters at execution time that was not in the snapshot.
 
