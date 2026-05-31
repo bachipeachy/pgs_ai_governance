@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pgs_ai_governance"
-version = "0.3.0"
+version = "0.4.0"
 description = "PGS AI Governance Domain — agent governance and AI licensing capability transforms"
 readme = "README.md"
 requires-python = ">=3.10"
