@@ -57,23 +57,15 @@ parameters:
 core:
   summary: Runtime binding of license management capability side effects
   description: Declares which concrete host implementations are used to satisfy capability pipelines during license management execution.
+  storage_structure: ai_governance::STRUCTURE_AGENT_GOVERNANCE_STORAGE_V0
 
   bindings:
     capability_side_effects::CS_REGISTRY_V0:
-      type: CS
-      host: RegistryRuntime
-      operation: READ_WRITE
       policy:
         path: "{{module_data_root}}/ai_governance/ai_licensing/license_registry.json"
-        strict: true
 
     capability_side_effects::CS_APPENDONLY_JSONL_V0:
-      type: CS
-      host: AppendOnlyJsonlRuntime
-      operation: APPEND
-      policy:
-        path: "{{module_data_root}}/ai_governance/ai_licensing/audit_log.jsonl"
-        strict: true
+      policy: {}
 
 extensions:
   notes:

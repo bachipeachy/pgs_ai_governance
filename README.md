@@ -9,7 +9,7 @@ It defines what actions are allowed, under what conditions, and with what conseq
 
 Behavior is declared in protocol, executed by runtime, implemented in capabilities, and observed via traces and state.
 
-> **New to PGS?** This is one of eight repositories in the Protocol-Governed Systems ecosystem.
+> **New to PGS?** This is one of the repositories in the Protocol-Governed Systems ecosystem.
 > For orientation, architecture overview, and end-to-end execution, start at [pgs_workspace](https://github.com/bachipeachy/pgs_workspace).
 
 ---
@@ -238,6 +238,7 @@ pgs_ai_governance/
 | `pgs_capabilities` | Implements CT/CS effects |
 | `pgs_blockchain` | Example: a full system domain using PGS |
 | **`pgs_ai_governance` ← here** | **Governance domain** |
+| `pgs_change_mgmt` | Governed SDLC — Change Request to Authoring Mandate (new in v0.5.0) |
 | `pgs_workspace` | Entry point — run and observe |
 
 ---

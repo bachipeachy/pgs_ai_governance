@@ -109,6 +109,7 @@ core:
     - step: append_audit_event
       side_effect: capability_side_effects::CS_APPENDONLY_JSONL_V0
       op: APPEND
+      store: LICENSE_AUDIT
       inputs:
         record:
           event_type: $.inputs.event_type

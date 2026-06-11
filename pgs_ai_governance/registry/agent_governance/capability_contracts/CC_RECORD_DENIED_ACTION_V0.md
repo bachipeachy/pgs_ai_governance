@@ -120,6 +120,7 @@ core:
     - step: append_denial_record
       side_effect: capability_side_effects::CS_APPENDONLY_JSONL_V0
       op: APPEND
+      store: GOVERNANCE_AUDIT
       inputs:
         record:
           event_code: "EV_AGENT_ACTION_DENIED_V0"

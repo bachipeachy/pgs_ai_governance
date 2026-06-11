@@ -76,12 +76,7 @@ core:
         strict: true
 
     capability_side_effects::CS_APPENDONLY_JSONL_V0:
-      type: CS
-      host: AppendOnlyJsonlRuntime
-      operation: APPEND
-      policy:
-        path: "{{module_data_root}}/ai_governance/agent_governance/governance_audit.jsonl"
-        strict: true
+      policy: {}
 
 extensions:
   notes:

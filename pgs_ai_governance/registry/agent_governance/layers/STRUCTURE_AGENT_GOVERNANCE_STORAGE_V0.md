@@ -32,6 +32,8 @@ Storage paths are a governance concern, not a runtime implementation detail. Thi
 
 **Entity Types:**
 - LICENSE_FACTS: Read-only license tier and status feed
+- GOVERNANCE_AUDIT: Append-only agent governance decision audit trail
+- LICENSE_AUDIT: Append-only license lifecycle audit trail
 
 ---
 
@@ -57,6 +59,12 @@ core:
     LICENSE_FACTS:
       description: "Read-only license tier and status fact feed (user_id → license record)"
       path: "ai_governance/ai_licensing/license_facts.json"
+    GOVERNANCE_AUDIT:
+      description: "Append-only audit trail for agent governance authorization and denial decisions"
+      path: "ai_governance/agent_governance/governance_audit.jsonl"
+    LICENSE_AUDIT:
+      description: "Append-only audit trail for license provisioning, denial, and reclaim decisions"
+      path: "ai_governance/ai_licensing/audit_log.jsonl"
 
   resolution:
     description: "Runtime path resolution strategy"
@@ -68,5 +76,7 @@ core:
     rules:
       - "Each entity type has dedicated storage"
       - "LICENSE_FACTS is read-only — agent governance may not mutate license facts"
+      - "GOVERNANCE_AUDIT is append-only — agent governance audit records are immutable"
+      - "LICENSE_AUDIT is append-only — license audit records are immutable"
       - "Storage paths resolved via STRUCTURE only"
 ```

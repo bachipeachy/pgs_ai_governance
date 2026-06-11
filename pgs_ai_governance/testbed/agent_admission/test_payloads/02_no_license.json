@@ -1,0 +1,9 @@
+{
+  "tool_name": "web_search",
+  "parameters": {
+    "query": "test"
+  },
+  "requesting_user_id": "EMP_NONE_001",
+  "domain_context": "agent_admission",
+  "request_id": "REQ_ADMISSION_002"
+}
